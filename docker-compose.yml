@@ -1,0 +1,18 @@
+version: "3"
+services:
+  folding-at-home:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    container_name: folding-at-home
+    environment:
+      - USER=martzcodes
+      - TEAM=0
+      - ENABLE_GPU=false
+      - ENABLE_SMP=true
+    ports:
+      - 7396:7396
+      - 36330:36330
+    volumes:
+        - config.xml:/opt/fahclient/config.xml
+    restart: unless-stopped
